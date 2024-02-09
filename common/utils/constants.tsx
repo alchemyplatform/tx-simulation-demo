@@ -30,4 +30,4 @@ export const HELP_TEXTS = {
 };
 
 export const LOOM_DEMO_URL =
-  "https://www.loom.com/embed/e6616e4a3468441d8d23b6154609206a?sid=b2055428-6a06-42db-aea6-e35770dd08a7";
+  "https://www.loom.com/share/5251952b6da940c8b30474755e1e7307?sid=4178a14d-6b46-4b2f-84fe-abbeda41d317";
