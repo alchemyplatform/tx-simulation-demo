@@ -94,4 +94,5 @@ export type Execution = {
   // @todo refer etherscan
   txType: string;
   naturalLanguage: string;
+  naturalLanguageResponse: string;
 };

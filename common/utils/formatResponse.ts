@@ -1,10 +1,9 @@
 import { AlchemyApiResponse, Execution } from "types";
 
 // @todo @anggxyz
-const parseResponseToNaturalLanguage = (
-  result: AlchemyApiResponse["result"]
-) => {
-  return JSON.stringify(result, undefined, 2);
+const parseResponseToNaturalLanguage = (params: Array<Execution>) => {
+  const naturalLanguage = params.map((p) => p.naturalLanguageResponse);
+  return JSON.stringify(naturalLanguage, null, 4);
 };
 
 // @todo @anggxyz
@@ -15,19 +14,19 @@ const parseParamsToNaturalLanguage = (params: Array<Execution>) => {
 
 export function formatResponse(
   response: AlchemyApiResponse | undefined,
-  nerdMode: boolean
+  nerdMode: boolean,
+  params: Array<Execution>
 ): string {
   if (!response) {
-    return "";
+    return "No response received.";
   }
 
-  // if nerd mode is on, display the json as is
+  // If nerd mode is on, display the JSON as is
   if (nerdMode) {
     return JSON.stringify(response, undefined, 2);
+  } else {
+    return parseResponseToNaturalLanguage(params);
   }
-
-  // pretty mode response
-  return parseResponseToNaturalLanguage(response.result);
 }
 
 export function formatParams(

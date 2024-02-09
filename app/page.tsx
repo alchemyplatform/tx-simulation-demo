@@ -22,8 +22,9 @@ import {
 } from "@common/utils/constants";
 
 export default function Home() {
-  const [executionType, setExecutionType] =
-    useState<ExecutionType>("SIMULATE_EXECUTION");
+  const [executionType, setExecutionType] = useState<ExecutionType>(
+    "SIMULATE_ASSET_CHANGES"
+  );
   const getTransactionsToDisplay = () => {
     switch (executionType) {
       case "SIMULATE_ASSET_CHANGES": {
@@ -77,7 +78,7 @@ export default function Home() {
       if (response.data) {
         const data = response.data as AlchemyApiResponse;
         setExecutionResponse(data);
-        setDataDisplay(formatResponse(data, nerdMode));
+        setDataDisplay(formatResponse(data, nerdMode, params));
       } else {
         throw "Error: data object not found in response";
       }
@@ -150,19 +151,19 @@ export default function Home() {
         <div className="flex flex-row items-center justify-between w-full">
           <div className="flex flex-row items-center gap-4">
             <InputTypeSelector
-              text="Simulate Execution"
+              text="Simulate Asset Changes"
               onChecked={setExecutionType}
-              value="SIMULATE_EXECUTION"
-              checked={executionType === "SIMULATE_EXECUTION"}
+              value="SIMULATE_ASSET_CHANGES"
+              checked={executionType === "SIMULATE_ASSET_CHANGES"}
               name="execution-type-selector"
               type="radio"
               styles="radio radio-primary"
             />
             <InputTypeSelector
-              text="Simulate Asset Changes"
+              text="Simulate Execution"
               onChecked={setExecutionType}
-              value="SIMULATE_ASSET_CHANGES"
-              checked={executionType === "SIMULATE_ASSET_CHANGES"}
+              value="SIMULATE_EXECUTION"
+              checked={executionType === "SIMULATE_EXECUTION"}
               name="execution-type-selector"
               type="radio"
               styles="radio radio-primary"
